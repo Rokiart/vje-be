@@ -52,18 +52,17 @@ email varchar(50) not null,
 oib char(11) not null,
 iban varchar(50) not null
 
-;
-
-
-
-
-
-
-
-
-
-
 );
+
+
+
+
+
+
+
+
+
+
 
 
 
