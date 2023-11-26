@@ -10,7 +10,7 @@ go
 
 
 
-create table agencija(
+create table agencije(
 
 agencija_id int not null primary key identity(1,1),
 naziv varchar(50) not null,
@@ -29,7 +29,7 @@ atrakcija_id int not null primary key identity(1,1),
 naziv varchar(50)not null,
 vrstaatrakcije varchar(50) not null,
 mjestoatrakcije varchar(50) not null,
-cijena decimal(6,2) not null
+cijenaatrakcije decimal(6,2) not null
 
 );
 
@@ -54,8 +54,7 @@ email varchar(50) not null,
 oib char(11) not null,
 iban varchar(50) not null
 
-<<<<<<< Updated upstream
-=======
+
 );
 
 create table smjestaji(
@@ -64,11 +63,10 @@ ulica varchar(50) not null,
 kucnibroj int not null,
 drzava varchar(50) not null 
  default('HRVATSKA') ,
-cijena decimal(6,2)
+cijenasmjestaja decimal(6,2),
+vlasnik int not null references vlasnici(vlasnik_id)
 
->>>>>>> Stashed changes
 );
-
 
 create table rezervacije(
 rezervacija_id int not null primary key identity(1,1),
@@ -77,15 +75,14 @@ vrijemekorištenjasmjestaja datetime not null,
 atrakcija int null references atrakcije(atrakcija_id),
 vrijemekoristenjaatrakcije datetime null,
 korisnik int not null references korisnici(korisnik_id),
-
+agencija int not null references agencije(agencija_id)
 );
 
---create table racuni(
---racun_id int not null primary key identity(1,1),
---smjestaj int not null references smjestaji(cijena),
---atrakcija int null references atrakcije(cijena),
+create table ponude(
+ponuda_id int not null primary key identity(1,1),
+cijenarzervacije int not null references rezervacije(rezervacija_id),
 
---);
+);
 
 
 
