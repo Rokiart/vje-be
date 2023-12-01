@@ -1,3 +1,6 @@
+
+use svastara;
+
 select count(*) from kupci;
 
 select ime , prezime from kupci 
