@@ -69,6 +69,8 @@ where postanskibroj like '31%';
  update mjesta set postanskibroj='31431' where naziv = 'Beketinci';
 
  ------------------------------------------------------------
+ -- Izlistaj imena i prezimena svih kupaca iz mjesta Livana
+
  select * from kupci;
 
  select sifra,naziv,postanskibroj,opcina from mjesta 
@@ -85,5 +87,13 @@ where postanskibroj like '31%';
  where a.naziv='Livana';
 
 ----------------------------------------------
+
+koliko je bilo primki u 2016
+
+select count (*) from primke where
+datum between '2016-01-01' and ' 2016-12-31';
+
+--zašto na kraju reda nema ";" ?
+select top 1 * from primke 
 
 
