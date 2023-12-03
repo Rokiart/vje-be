@@ -1,4 +1,4 @@
-use master;
+﻿use master;
 go
 drop database if exists zupanijasql;
 go
@@ -40,26 +40,28 @@ insert into  opcine(naziv) values
 ('Osijek'),('BeliManastir'),('Vukovar'),('Vinkovci'),('Virovitica'),('Slatina');
 
 insert into mjesta(naziv) values
-('Antunovac'),('�epin'),('Bilje'),('Bizovac'),
+('Antunovac'),('Èepin'),('Bilje'),('Bizovac'),
 ('BabibaGreda'),('Borovo'),('Nustar'),('Privlaka'),
 ('Sopje'),('Suhopolje'),('Zdenci'),('Crnac');
 
 insert into zupani(ime,prezime) values
 ('Mato','Lukic'),('Damir','Dekanic'),('Igor','Androvic');
 
-select * from mjesta ;
---select * from  opcine;
+--select * from mjesta ;
+----select * from  opcine;
 
-select  a.naziv as mjesto,b.naziv as opcine,c.naziv as zupanije,d.ime,prezime
-from mjesta a inner join opcine b
-on b.sifra=a.fkopcina
-inner join zupanije c
-on c.sifra=b.fkzupanija
-inner join zupani d
-on d.sifra=c.FKzupan;
+--select  a.naziv as mjesto,b.naziv as opcine,c.naziv as zupanije,d.ime,prezime
+--from mjesta a inner join opcine b
+--on b.sifra=a.FKopcina
+--inner join zupanije c
+--on c.sifra=b.FKzupanija
+--inner join zupani d
+--on d.sifra=c.FKzupan;
 
-
-
-
-
-
+--select d.naziv as mjesto,c.naziv as opcine,b.naziv as zupanije,a.ime,prezime
+--from zupani a inner join zupanije b
+--on a.sifra=b.FKzupan
+--inner join opcine c
+--on b.sifra=c.FKzupanija
+--inner join mjesta d
+--on c.sifra=d.FKopcina;
