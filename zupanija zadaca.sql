@@ -1,12 +1,12 @@
 use master;
 go
-drop database if exists zupanija;
+drop database if exists zupanijasql;
 go
-create database zupanija;
+create database zupanijasql;
 go
-alter database zupanija collate Croatian_CI_AS;
+alter database zupanijasql collate Croatian_CI_AS;
 go
-use zupanija;
+use zupanijasql;
 
 
 create table zupani(
@@ -18,17 +18,18 @@ prezime varchar(50)
 create table zupanije(
 sifra int not null primary key identity(1,1),
 naziv varchar(50),
-zupan int references zupani(sifra)
+FKzupan int references zupani(sifra)
 );
 
 create table opcine(
 sifra int not null primary key identity(1,1),
-zupanija int references zupanije(sifra),
+FKzupanija int references zupanije(sifra),
 naziv varchar(50)
 );
 
 create table mjesta(
-opcina int references opcine(sifra),
+sifra int not null primary key identity(1,1),
+FKopcina int references opcine(sifra),
 naziv varchar(50)
 );
 
@@ -36,6 +37,29 @@ insert into zupanije(naziv) values
 ('Osijeckobaranjska'),('VukovarskoSrijemska'),('VirovitickoPodravska');
 
 insert into  opcine(naziv) values
-('Osijek','BeliManastir','Vukovar','Vinkovci','Virovitica','Slatina');
+('Osijek'),('BeliManastir'),('Vukovar'),('Vinkovci'),('Virovitica'),('Slatina');
+
+insert into mjesta(naziv) values
+('Antunovac'),('Èepin'),('Bilje'),('Bizovac'),
+('BabibaGreda'),('Borovo'),('Nustar'),('Privlaka'),
+('Sopje'),('Suhopolje'),('Zdenci'),('Crnac');
+
+insert into zupani(ime,prezime) values
+('Mato','Lukic'),('Damir','Dekanic'),('Igor','Androvic');
+
+select * from mjesta ;
+--select * from  opcine;
+
+select  a.naziv as mjesto,b.naziv as opcine,c.naziv as zupanije,d.ime,prezime
+from mjesta a inner join opcine b
+on b.sifra=a.fkopcina
+inner join zupanije c
+on c.sifra=b.fkzupanija
+inner join zupani d
+on d.sifra=c.FKzupan;
+
+
+
+
 
 
