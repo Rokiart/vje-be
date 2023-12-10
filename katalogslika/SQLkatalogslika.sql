@@ -9,6 +9,10 @@ alter database katalogslika collate Croatian_CI_AS;
 go
 use katalogslika;
 
+create table fotografije(
+    sifra int not null primary key identity(1,1),
+	fotolokacija varchar(100) 
+	);
 create table lokacije(
     sifra int not null primary key identity(1,1),
 	ime varchar(50),
@@ -31,5 +35,7 @@ create table nazivi(
 create table slike(
     sifra int not null primary key identity(1,1),
 	naziv int not null references nazivi(sifra),
+	fotografija int references fotografije(sifra)
 	);
+
 
